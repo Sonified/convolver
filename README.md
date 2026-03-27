@@ -1,4 +1,4 @@
-# Convolution Explorer
+# Convolver
 
 A web-based tool for convolving two audio signals and exploring the results.
 
