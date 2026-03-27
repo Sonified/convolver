@@ -2,6 +2,48 @@
  * Waveform drawing utilities
  */
 
+export function createPlayhead(canvas) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'waveform-wrap';
+    canvas.parentNode.insertBefore(wrapper, canvas);
+    wrapper.appendChild(canvas);
+
+    const line = document.createElement('div');
+    line.className = 'playhead';
+    wrapper.appendChild(line);
+
+    let animId = null;
+
+    return {
+        wrapper,
+        start(getProgress) {
+            const tick = () => {
+                const p = getProgress();
+                line.style.left = `${p * 100}%`;
+                line.style.display = 'block';
+                if (p < 1) {
+                    animId = requestAnimationFrame(tick);
+                } else {
+                    line.style.display = 'none';
+                }
+            };
+            tick();
+        },
+        stop() {
+            if (animId) cancelAnimationFrame(animId);
+            animId = null;
+            line.style.display = 'none';
+        },
+        onClick(callback) {
+            wrapper.addEventListener('click', (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const ratio = (e.clientX - rect.left) / rect.width;
+                callback(Math.max(0, Math.min(1, ratio)));
+            });
+        }
+    };
+}
+
 export function drawWaveform(canvas, buffer) {
     const ctx = canvas.getContext('2d');
     const dpr = window.devicePixelRatio || 1;

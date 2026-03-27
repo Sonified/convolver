@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convolver</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💧</text></svg>">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,6 +15,27 @@
         <!-- Left: Signal A -->
         <div class="panel">
             <h2>Signal A</h2>
+            <select class="preset-select" id="presetA">
+                <option value="">-- Pick a bird --</option>
+                <optgroup label="Birds">
+                    <option value="audio/mp3/birds/Birds_20.mp3">Birds 20</option>
+                    <option value="audio/mp3/birds/ESM_HG_Cinematic_FX_creature_animal_bird_crow_morning_calls_05.mp3">Crow Morning Calls</option>
+                    <option value="audio/mp3/birds/EX_BIRD_nightingale_berlin_scratchy_phrase.mp3">Nightingale Berlin Scratchy</option>
+                    <option value="audio/mp3/birds/EX_BIRD_nightingale_helsinki_loud_phrase.mp3">Nightingale Helsinki Loud</option>
+                    <option value="audio/mp3/birds/EX_SW_ambience_birds_trill.mp3">Birds Trill Ambience</option>
+                    <option value="audio/mp3/birds/FF_AS_bird_chirp_run_it_back.mp3">Bird Chirp Run It Back</option>
+                    <option value="audio/mp3/birds/FF_AW_field_rec_raven_squawk.mp3">Raven Squawk</option>
+                    <option value="audio/mp3/birds/KSHMR_sok5_fx_animal_hawk_D.mp3">Hawk</option>
+                    <option value="audio/mp3/birds/KUURO_animal_fx_01_bird_chirp.mp3">Bird Chirp</option>
+                    <option value="audio/mp3/birds/MO_FN_foley_designed_quailcall_bird.mp3">Quail Call</option>
+                    <option value="audio/mp3/birds/PMBA_FX_Birds_Night_154.mp3">Birds Night</option>
+                    <option value="audio/mp3/birds/RARE_ABP2_Birdcall_oneshot_wavy.mp3">Birdcall Wavy</option>
+                    <option value="audio/mp3/birds/SPLC-3948_FX_Oneshot_Birds_Owl_Hooting_Reverb.mp3">Owl Hooting Reverb</option>
+                    <option value="audio/mp3/birds/SPS_SS_bird_fx_perc_flax.mp3">Bird Perc Flax</option>
+                    <option value="audio/mp3/birds/SS_CABJ2_172_fx_sonik_vintage_jungle_vibe_Emin.mp3">Vintage Jungle Vibe</option>
+                </optgroup>
+            </select>
+            <div class="preset-divider">or</div>
             <div class="drop-zone" id="dropA">
                 <div class="icon">🎵</div>
                 <div class="label">Drop audio or click to browse</div>
@@ -28,11 +50,40 @@
         <div class="controls">
             <div class="operator">*</div>
             <button class="primary" id="convolveBtn" disabled>Convolve</button>
+            <button class="primary" id="xcorrBtn" disabled>Cross-Correlate</button>
+            <button class="primary" id="ringModBtn" disabled>Ring Mod</button>
+            <button class="primary" id="minBtn" disabled>Min</button>
+            <button class="primary" id="maxBtn" disabled>Max</button>
         </div>
 
         <!-- Right: Signal B -->
         <div class="panel">
             <h2>Signal B</h2>
+            <select class="preset-select" id="presetB">
+                <option value="">-- Pick a sound --</option>
+                <optgroup label="Fire">
+                    <option value="audio/mp3/fire/ESM_EMWI_FX_whoosh_fire_magma_boiling_lava_burn_intense_flame_04.mp3">Fire Magma Boiling Lava</option>
+                    <option value="audio/mp3/fire/FireballBurst_S08FI.30.mp3">Fireball Burst</option>
+                    <option value="audio/mp3/fire/FireballPassByHeavy_SFXB.63.mp3">Fireball Pass By Heavy</option>
+                    <option value="audio/mp3/fire/FireballPassByHeavy_SFXB._1.mp3">Fireball Pass By Heavy 2</option>
+                    <option value="audio/mp3/fire/FireballWave_BW.5211.mp3">Fireball Wave</option>
+                    <option value="audio/mp3/fire/KSHMR_sok5_fx_fire_campfire.mp3">Campfire</option>
+                </optgroup>
+                <optgroup label="Soundscapes">
+                    <option value="audio/mp3/soundscapes/BRS_Water_Splash_CanBall_4.mp3">Water Splash Canball</option>
+                    <option value="audio/mp3/soundscapes/BRS_Water_Splash_Lunge_11.mp3">Water Splash Lunge</option>
+                    <option value="audio/mp3/soundscapes/ESM_SC_Beach_Loop_2_Ambience_Nature_South_Carolina_Water_Waves_Sea_Gull.mp3">Beach Loop Sea Gull</option>
+                    <option value="audio/mp3/soundscapes/ESM_Thunderstorm_6_Ambience_Nature_Tribal_Organic_Tennessee_Thunder_Storm_Lightning_Strike.mp3">Thunderstorm Tennessee</option>
+                    <option value="audio/mp3/soundscapes/FF_HFFX_atmosphere_thunder_cyan.mp3">Atmosphere Thunder Cyan</option>
+                    <option value="audio/mp3/soundscapes/FF_SFFX_ambience_other_worlds_windy.mp3">Other Worlds Windy</option>
+                    <option value="audio/mp3/soundscapes/FishSplashWater_S08AN.109.mp3">Fish Splash Water</option>
+                    <option value="audio/mp3/soundscapes/OceanWavesCrash_SFXB.124.mp3">Ocean Waves Crash</option>
+                    <option value="audio/mp3/soundscapes/OceanWavesCrash_SFXB.4800.mp3">Ocean Waves Crash (Long)</option>
+                    <option value="audio/mp3/soundscapes/SPLC-1078_FX_Oneshot_Thunder_Close_Loud.mp3">Thunder Close Loud</option>
+                    <option value="audio/mp3/soundscapes/ThunderClap_BW.59745.mp3">Thunder Clap</option>
+                </optgroup>
+            </select>
+            <div class="preset-divider">or</div>
             <div class="drop-zone" id="dropB">
                 <div class="icon">🔊</div>
                 <div class="label">Drop audio or click to browse</div>
@@ -46,14 +97,10 @@
         <!-- Result -->
         <div class="panel result-panel" id="resultPanel">
             <h2>Result (A * B)</h2>
-            <div class="result-inner">
-                <div>
-                    <canvas class="waveform" id="waveR"></canvas>
-                </div>
-                <div style="display: flex; gap: 0.5rem;">
-                    <button id="playR" disabled>&#9654; Play</button>
-                    <button id="downloadR" disabled>&#11015; Download WAV</button>
-                </div>
+            <canvas class="waveform" id="waveR"></canvas>
+            <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                <button class="play-btn" id="playR" disabled>&#9654; Play</button>
+                <button class="play-btn" id="downloadR" disabled>&#11015; Download WAV</button>
             </div>
             <div class="status" id="status"></div>
         </div>
